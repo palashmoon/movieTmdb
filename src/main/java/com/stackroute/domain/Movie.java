@@ -10,19 +10,19 @@ import javax.validation.constraints.*;
 public class Movie {
     @Id
 
-    //@NotNull @Min(0) @PositiveOrZero
+    @NotNull @Min(0) @PositiveOrZero
     int imdbId;
 
-    //@NotNull @Size(min =1  , max = 60)
+    @NotNull @Size(min =1  , max = 60)
     String movieTitle;
 
-    //@NotNull @Size(min =  1 , max = 60)
+    @NotNull @Size(min =  1 , max = 60)
     String posterUrl;
 
-    //@NotNull  @Min(0) @PositiveOrZero
+    @NotNull  @Min(0) @PositiveOrZero
     int rating;
 
-    //@NotNull @Size(min = 1 , max = 60)
+    @NotNull @Size(min = 1 , max = 60)
     String yearOfRelease;
 
     public Movie() {

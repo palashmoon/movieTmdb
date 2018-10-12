@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -18,10 +19,9 @@ import java.util.List;
 @RequestMapping(value = "movie/v1")
 
 public class MovieController {
-    @Autowired
-    //@Qualifier("abcd")
     private MovieService movieService;
 
+    @Autowired
     public MovieController(MovieService movieService){
         this.movieService = movieService;
     }
@@ -31,7 +31,7 @@ public class MovieController {
         ResponseEntity responseEntity;
         try {
             movieService.saveMovie(movie);
-            responseEntity = new ResponseEntity<Movie>(movie , HttpStatus.OK);
+            responseEntity = new ResponseEntity<Movie>(movie , HttpStatus.CREATED);
         }
         catch (MovieAlreadyExistException ex){
             responseEntity = new ResponseEntity(ex.getMessage() , HttpStatus.CONFLICT);
